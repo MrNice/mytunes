@@ -7,9 +7,7 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      // this.model.play();
-      console.log(this.model);
-      // app.sonqQueue.Add(this.model);
+      // Have the model trigger itself
       this.model.trigger('addToQueue', this.model);
     }
   },

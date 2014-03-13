@@ -2,15 +2,8 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
-    console.log('intialize');
-  },
+    console.log('SongQueue Initialized');
 
-  // Not working, going to add elsewhere
-  events: {
-    'addToQueue': function(song) {
-      console.log(song);
-      this.Add(song);
-    },
   },
 
   next: function(){

@@ -5,6 +5,12 @@ var AppModel = Backbone.Model.extend({
     this.set('currentSong', new SongModel());
     this.set('songQueue', new SongQueue());
 
+    //Set our queue to listen to the library's clicks
+    this.get('songQueue').listenTo(params.library, 'addToQueue', function(song) {
+      this.add(song);
+      console.log( song.get('title') + " was added to the queue");
+    });
+
     /* Note that 'this' is passed as the third argument. That third argument is
     the context. The 'play' handler will always be bound to that context we pass in.
     In this example, we're binding it to the App. This is helpful because otherwise
@@ -17,10 +23,6 @@ var AppModel = Backbone.Model.extend({
       this.set('currentSong', song);
     }, this);
 
-    params.library.on('addToQueue', function(song) {
-      this.get("songQueue").add(song);
-      console.log("Something was added!");
-    }, this);
   }
 
 });
